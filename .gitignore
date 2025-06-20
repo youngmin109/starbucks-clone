@@ -1,0 +1,19 @@
+# 디자인 리소스
+/assets/images/
+assets/icons/
+
+# macOS 시스템 파일
+.DS_Store
+
+# VSCode 설정 파일
+.vscode/
+
+# 빌드 결과물 (추후 JS 컴파일 시 대비)
+dist/
+build/
+
+# 환경변수 파일 (있을 경우)
+.env
+
+# npm 또는 yarn 캐시
+node_modules/
