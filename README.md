@@ -1,36 +1,174 @@
 # starbucks-clone
 
+HTML/CSS 기초 학습 및 웹 페이지 클론 코딩 프로젝트입니다.  
+스타벅스의 공식 웹페이지를 참고하여, 마크업 구조부터 스타일 설계까지 단계적으로 구현합니다.
+
+---
+
+## 목차
+
+- [Day 1 - Head 태그 설정](#day-1)
+- [Day 2 - Header 구조 및 정렬](#day-2)
+- [결과 예시 스크린샷](#결과-예시-스크린샷)
+
+---
+
+## Day 1
+
 <details>
-<summary> Day 1</summary>
+<summary>Head 태그 설정 요약</summary>
 
 ### 문자 인코딩 설정
-- `<meta charset="UTF-8" />`  
-  → 한글 및 특수문자 인식 가능  
-  → **UTF-8**: 초성·중성·종성 분리 저장
+
+```html
+<meta charset="UTF-8" />
+```
+
+- 한글 및 특수문자 인식 가능
+- UTF-8: 초성·중성·종성으로 분리 저장하는 표준 인코딩 방식
 
 ---
 
 ### 뷰포트 설정
-- `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
-  - **width=device-width**: 디바이스 화면 너비에 맞춤
-  - **initial-scale**: 초기 배율 설정 (1.0 = 100%)
-  - 기타 옵션:
-    - `user-scalable=no`: 사용자 확대/축소 비허용
-    - `maximum-scale`, `minimum-scale`: 최대/최소 배율 설정
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+- width=device-width: 디바이스 가로 폭에 맞춤
+- initial-scale: 초기 배율 설정
+- 기타 옵션:
+  - user-scalable=no
+  - maximum-scale
+  - minimum-scale
 
 ---
 
 ### 오픈 그래프 (Open Graph)
-- 웹페이지를 **SNS 공유 시 보여줄 정보 설정**
+
+```html
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Starbucks" />
+<meta property="og:title" content="Starbucks Coffee Korea" />
+<meta property="og:description" content="스타벅스는 세계에서 가장 큰 다국적 커피 전문점으로, 64개국에서 총 23,187개의 매점을 운영하고 있습니다." />
+<meta property="og:image" content="./images/starbucks_seo.jpg" />
+<meta property="og:url" content="https://starbucks.co.kr" />
+```
+
+- SNS 공유 시 메타 정보로 사용됨
+
+---
 
 ### 트위터 카드
-- 웹페이지가 소셜 미디어로 공유될 때 우선적으로 활용되는 정보를 지정
+
+```html
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="Starbucks" />
+<meta property="twitter:title" content="Starbucks Coffee Korea" />
+<meta property="twitter:description" content="스타벅스는 세계에서 가장 큰 다국적 커피 전문점으로, 64개국에서 총 23,187개의 매점을 운영하고 있습니다." />
+<meta property="twitter:image" content="./images/starbucks_seo.jpg" />
+<meta property="twitter:url" content="https://starbucks.co.kr" />
+```
+
+- 트위터 공유 시 메타 정보로 사용됨
+
+---
 
 ### 파비콘
-- 웹페이지를 나타내는 아이콘, 로고를 설정
-- 자동적으로 루트경로의 favicon.ico 파일을 로딩하며, 좀 더 선명한 로고를 원할 때는 <link />를 작성
 
-### Google Fonts & Google Material Icons
-- 폰트는 라이선스를 꼭 확인해야한다.
-- 구글에서 제공하는 머터리얼 아이콘을 무료로 사용 가능 (디자이너에게 매번 요청하는게 아닌)
+```html
+<link rel="icon" href="./favicon.png" />
+```
 
+- 브라우저 탭에 표시되는 아이콘
+- `.ico`는 기본 적용, `.png`는 직접 지정 필요
+- 추천 크기: 16x16, 32x32, 500x500
+
+---
+
+### Google Fonts & Material Icons
+
+```html
+<!-- 나눔고딕 폰트 적용 -->
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet" />
+
+<!-- 머터리얼 아이콘 사용 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+```
+
+- 구글에서 제공하는 무료 리소스
+- 폰트 사용 시 라이선스 확인 필요
+
+</details>
+
+---
+
+## Day 2
+
+<details>
+<summary>Header 구조 및 정렬 방식</summary>
+
+### 이미지 기본 속성 및 정렬
+
+- 이미지 기본 height: `75px`
+- 인라인 요소의 기본 베이스라인 공백 제거 → `display: block` 사용
+
+---
+
+### 정렬 방식 1 - 가운데 정렬 (가장 일반적인 패턴)
+
+```css
+header {
+  background-color: royalblue;
+}
+header .inner {
+  width: 1100px;
+  height: 120px;
+  margin: 0 auto;
+}
+```
+
+- `.inner`에 고정 너비 부여
+- `margin: 0 auto`로 수평 중앙 정렬
+
+---
+
+### 정렬 방식 2 - 수직 중앙 정렬 (로고 등 위치 조정)
+
+```css
+.logo {
+  height: 75px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+```
+
+- 상하 위치 기준을 0으로 지정
+- 요소에 `height` 필수
+- 부모 요소는 `position: relative` 필요
+
+</details>
+
+---
+
+## 결과 예시 스크린샷
+
+아래는 Day 1까지 작업한 결과입니다.
+
+```
+![Head 설정 완료 스크린샷](./screenshots/day1-head-result.png)
+```
+
+※ 실제 이미지는 `/screenshots` 폴더에 저장하여 연결 필요
+
+---
+
+## 프로젝트 관리
+
+- 매일 학습 내용을 `addme.md`에 정리
+- GitHub 버전 관리로 기록과 피드백 추적
+- `.gitignore`를 통해 이미지, 설정 파일 제외
+
+---
