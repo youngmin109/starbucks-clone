@@ -149,6 +149,14 @@ header .inner {
 - 요소에 `height` 필수
 - 부모 요소는 `position: relative` 필요
 
+
+- a태그에서 링크가 준비되어있지 않을때,
+javascript:void(0)과 # 해쉬코드를 작성하는 2가지 방법이 있음
+
+javascript 연동시 defer 속성 확인할 것! 
+
+
+
 </details>
 
 ---
@@ -158,17 +166,12 @@ header .inner {
 아래는 Day 1까지 작업한 결과입니다.
 
 ```
-![Head 설정 완료 스크린샷](./screenshots/day1-head-result.png)
+![Head 설정 완료 스크린샷](./githubImage/2days.jpg)
 ```
 
 ※ 실제 이미지는 `/screenshots` 폴더에 저장하여 연결 필요
 
 ---
 
-## 프로젝트 관리
-
-- 매일 학습 내용을 `addme.md`에 정리
-- GitHub 버전 관리로 기록과 피드백 추적
-- `.gitignore`를 통해 이미지, 설정 파일 제외
 
 ---
