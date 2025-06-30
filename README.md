@@ -1,7 +1,7 @@
 # starbucks-clone
 
 HTML/CSS 기초 학습 및 웹 페이지 클론 코딩 프로젝트입니다.  
-스타벅스의 공식 웹페이지를 참고하여, 마크업 구조부터 스타일 설계까지 단계적으로 구현합니다.
+스타벅스의 공식 웹페이지를 참고하여, 단계적으로 구현합니다.
 
 ---
 
@@ -9,7 +9,7 @@ HTML/CSS 기초 학습 및 웹 페이지 클론 코딩 프로젝트입니다.
 
 - [Day 1 - Head 태그 설정](#day-1)
 - [Day 2 - Header 구조 및 정렬](#day-2)
-- [결과 예시 스크린샷](#결과-예시-스크린샷)
+- [Day 3 - Header 드롭다운 메뉴](#day-3)
 
 ---
 
@@ -158,7 +158,7 @@ javascript 연동시 defer 속성 확인할 것!
 아래는 Day 2까지 작업한 결과입니다.
 
 ```
-![Head 설정 완료 스크린샷](./githubImage/2days.jpg)
+![Head 설정 완료 스크린샷](./githubImage/2days.png)
 ```
 
 
@@ -248,23 +248,16 @@ window.addEventListener('scroll', _.throttle(function () {
   position: absolute;
   width: 100%;
   ```
+  
+아래는 Day 3까지 작업한 결과입니다.
 
----
-
-### 스크린샷 예시
-
-아래는 배지 숨김/보임 애니메이션 및 BEM 구조 적용 후 화면 예시입니다.
-
-```markdown
-![Day 3 결과 예시](./screenshots/day3-dropdown.png)
 ```
+![Head 설정 완료 스크린샷](./githubImage/3days.png)
+```
+
+
 
 </details>
 
 
-아래는 Day 3까지 작업한 결과입니다.
-
-```
-![Head 설정 완료 스크린샷](./githubImage/3days.jpg)
-```
 
