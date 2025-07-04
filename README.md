@@ -256,8 +256,16 @@ window.addEventListener('scroll', _.throttle(function () {
 ```
 
 
-
 </details>
 
+## Day 4
+
+<details>
+<summary>Head 태그 설정 요약</summary>
+지금까지 헤더라는 section을 다룸. 
+이제 body section을 다룰거임. 
+
+
+</details>
 
 
