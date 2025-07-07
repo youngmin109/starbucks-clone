@@ -1,7 +1,7 @@
 # starbucks-clone
 
 HTML/CSS 기초 학습 및 웹 페이지 클론 코딩 프로젝트입니다.  
-스타벅스의 공식 웹페이지를 참고하여, 마크업 구조부터 스타일 설계까지 단계적으로 구현합니다.
+스타벅스의 공식 웹페이지를 참고하여, 단계적으로 구현합니다.
 
 ---
 
@@ -9,7 +9,7 @@ HTML/CSS 기초 학습 및 웹 페이지 클론 코딩 프로젝트입니다.
 
 - [Day 1 - Head 태그 설정](#day-1)
 - [Day 2 - Header 구조 및 정렬](#day-2)
-- [결과 예시 스크린샷](#결과-예시-스크린샷)
+- [Day 3 - Header 드롭다운 메뉴](#day-3)
 
 ---
 
@@ -155,23 +155,117 @@ javascript:void(0)과 # 해쉬코드를 작성하는 2가지 방법이 있음
 
 javascript 연동시 defer 속성 확인할 것! 
 
+아래는 Day 2까지 작업한 결과입니다.
+
+```
+![Head 설정 완료 스크린샷](./githubImage/2days.png)
+```
 
 
 </details>
 
 ---
 
-## 결과 예시 스크린샷
+## Day 3
 
-아래는 Day 1까지 작업한 결과입니다.
+<details>
+<summary>드롭다운 메뉴, 스크롤 이벤트, BEM 네이밍 정리</summary>
 
+### 드롭다운 메뉴 구현
+
+- `<header>` 안의 `.badges` 요소를 기준으로 **스크롤 이벤트 발생 시 배지 숨김/보임 처리**
+- 외부 라이브러리:
+  - `lodash`: `_.throttle()` 함수로 스크롤 이벤트 제한
+  - `GSAP`: 애니메이션 처리 (투명도 및 display)
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 ```
-![Head 설정 완료 스크린샷](./githubImage/2days.jpg)
+
+```javascript
+const badgeEl = document.querySelector('header .badges');
+
+window.addEventListener('scroll', _.throttle(function () {
+  if (window.scrollY > 500) {
+    gsap.to(badgeEl, .6, {
+      opacity: 0,
+      display: 'none'
+    });
+  } else {
+    gsap.to(badgeEl, .6, {
+      opacity: 1,
+      display: 'block'
+    });
+  }
+}, 300));
 ```
 
-※ 실제 이미지는 `/screenshots` 폴더에 저장하여 연결 필요
+- `_.throttle(함수, 시간)`  
+  → 지정된 시간 간격으로 함수 실행 제한 (성능 최적화)
+- `gsap.to()`  
+  → 요소에 대해 애니메이션 처리
 
 ---
 
+### inner 클래스의 역할
+
+```css
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+}
+```
+
+- 고정된 넓이로 **한 줄의 콘텐츠를 가운데로 정렬**해주는 컨테이너 역할
 
 ---
+
+### BEM 네이밍 방식
+
+- **BEM**: Block Element Modifier  
+  HTML 클래스 이름의 체계적인 작성법
+
+```html
+<!-- 예시 -->
+<div class="menu">
+  <div class="menu__item"></div>
+  <div class="menu__item menu__item--active"></div>
+</div>
+```
+
+- `block__element`: 블록 내의 구성 요소
+- `block--modifier`: 블록의 상태나 변형 (예: `is-active`, `--disabled`)
+
+---
+
+### position: absolute / fixed 의 너비 줄어듦 현상
+
+- `absolute`, `fixed` 요소는 **기본적으로 내용만큼의 너비만 가짐**
+- `width`를 명시하지 않으면 inline-block처럼 줄어들 수 있음
+- 해결법:
+  ```css
+  position: absolute;
+  width: 100%;
+  ```
+  
+아래는 Day 3까지 작업한 결과입니다.
+
+```
+![Head 설정 완료 스크린샷](./githubImage/3days.png)
+```
+
+
+</details>
+
+## Day 4
+
+<details>
+<summary>Head 태그 설정 요약</summary>
+지금까지 헤더라는 section을 다룸. 
+이제 body section을 다룰거임. 
+
+
+</details>
+
+
