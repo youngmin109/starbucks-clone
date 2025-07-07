@@ -3,16 +3,6 @@
 HTML/CSS 기초 학습 및 웹 페이지 클론 코딩 프로젝트입니다.  
 스타벅스의 공식 웹페이지를 참고하여, 단계적으로 구현합니다.
 
----
-
-## 목차
-
-- [Day 1 - Head 태그 설정](#day-1)
-- [Day 2 - Header 구조 및 정렬](#day-2)
-- [Day 3 - Header 드롭다운 메뉴](#day-3)
-
----
-
 ## Day 1
 
 <details>
@@ -101,8 +91,6 @@ HTML/CSS 기초 학습 및 웹 페이지 클론 코딩 프로젝트입니다.
 
 </details>
 
----
-
 ## Day 2
 
 <details>
@@ -164,7 +152,6 @@ javascript 연동시 defer 속성 확인할 것!
 
 </details>
 
----
 
 ## Day 3
 
@@ -261,11 +248,52 @@ window.addEventListener('scroll', _.throttle(function () {
 ## Day 4
 
 <details>
-<summary>Head 태그 설정 요약</summary>
-지금까지 헤더라는 section을 다룸. 
-이제 body section을 다룰거임. 
+<summary>Body 섹션 진입 및 순차적 이미지 페이드인</summary>
+
+### Body 섹션 구성 시작
+
+- 지금까지는 `<header>` 영역을 작업했고, 이번부터는 본격적으로 `<body>` 섹션 작업 시작
+- 구조보다 **시각적 효과와 레이아웃 연출** 중심으로 작업 진행
+
+---
+
+### 스타일 클래스 설계 및 재사용 방식
+
+- 버튼 디자인을 CSS에서 미리 만들어두고, HTML에 클래스로 호출하여 재사용
+- 상태/크기 등을 클래스 조합으로 처리
+
+```html
+<button class="btn btn--primary">버튼1</button>
+<button class="btn btn--secondary btn--large">버튼2</button>
+```
+
+- `btn`: 공통 버튼 디자인  
+- `btn--primary`, `btn--secondary`: 버튼 상태 구분  
+- `btn--large`: 버튼 크기 구분
+
+---
+
+### GSAP을 이용한 순차적 이미지 페이드인 효과
+
+- `.visual .fade-in` 요소들에 대해 순서대로 나타나는 애니메이션 적용
+- 외부 라이브러리 **GSAP** 사용
+
+```javascript
+const fadeEls = document.querySelectorAll('.visual .fade-in');
+
+fadeEls.forEach(function (fadeEl, index) {
+  gsap.to(fadeEl, 1, {
+    delay: (index + 1) * 0.7, // 요소마다 0.7초씩 딜레이
+    opacity: 1                // 점점 나타나게 함
+  });
+});
+```
+
+- `querySelectorAll()`로 대상 요소 선택  
+- `forEach()`로 반복 처리  
+- `gsap.to()`로 애니메이션 적용  
+- `delay`: 등장 시점을 순차적으로 설정
 
 
 </details>
-
 
