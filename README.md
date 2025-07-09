@@ -297,3 +297,22 @@ fadeEls.forEach(function (fadeEl, index) {
 
 </details>
 
+### Day 3
+
+<details>
+  <summary>요소 슬라이드 </summary>
+- swiper js 라이브러리를 가져와서 슬라이드 만듦.
+- 웹에 최적화된 .min을 씀
+
+// new Swiper(선택자, 옵션)
+new Swiper('.notice-line .swiper-container', {
+    direction: 'vertical',
+    autoplay: true,
+    loop: true
+});
+
+width: calc(819px * 3); 이런식으로 칼크함수를 통해 계산을 할 수 있음.
+
+</details>
+
+
