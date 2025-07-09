@@ -340,6 +340,14 @@ header .badges .badge {
     height: 62px;
     flex-grow: 1;
 }
+.notice .notice-line .inner__left .swiper-slide {
+    height: 62px;
+    display: flex;
+    align-items: center;
+}
+.notice .notice-line .inner__left .swiper-slide a {
+    color: #fff;
+}
 .notice .notice-line .inner__left .notice-line__more {
     width: 62px;
     height: 62px;
@@ -371,5 +379,21 @@ header .badges .badge {
     align-items: center;
 }
 .notice .notice-line .inner .inner__right .toggle-promotion .material-icons{
-    
+    font-size: 30px;
+}
+
+.notice .promotion {
+    height: 693px;
+    background-color: #f6f5ef;
+    position: relative;
+}
+.notice .promotion .swiper-container {
+    width: calc(819px * 3 + 20px);
+    height: 553px;
+    text-align: center;
+    font-size: 200px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    margin-left: calc((819px * 3 + 20px) / -2);
 }
