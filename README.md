@@ -297,22 +297,73 @@ fadeEls.forEach(function (fadeEl, index) {
 
 </details>
 
-### Day 3
+### Day 5
 
 <details>
-  <summary>요소 슬라이드 </summary>
-- swiper js 라이브러리를 가져와서 슬라이드 만듦.
-- 웹에 최적화된 .min을 씀
+<summary>요소 슬라이드 (Swiper.js 활용)</summary>
 
-// new Swiper(선택자, 옵션)
+### Swiper.js 슬라이드 기능 도입
+
+- **Swiper.js**는 터치 슬라이드 기능을 제공하는 JS 라이브러리
+- `.min.js` 파일은 웹 배포용으로 최적화된 **압축 버전** 사용
+- 공지 영역 `.notice-line` 안에 세로 방향 슬라이드를 구현
+
+```html
+<!-- 라이브러리 불러오기 -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+```
+
+```javascript
+// Swiper 인스턴스 생성: new Swiper(선택자, 옵션)
 new Swiper('.notice-line .swiper-container', {
-    direction: 'vertical',
-    autoplay: true,
-    loop: true
+  direction: 'vertical',  // 슬라이드 방향: 세로
+  autoplay: true,         // 자동 재생
+  loop: true              // 루프 재생
 });
+```
 
-width: calc(819px * 3); 이런식으로 칼크함수를 통해 계산을 할 수 있음.
+- `.swiper-container` 내부에서 `.swiper-slide` 요소들이 순차적으로 슬라이딩됨
+
+---
+
+### CSS에서 `calc()` 함수 활용
+
+- CSS `calc()` 함수로 슬라이드 컨테이너의 전체 너비 계산 가능
+
+```css
+width: calc(819px * 3);
+```
+
+- 위 예시는 슬라이드 3개의 총 너비를 계산하는 방식
+- `calc()`는 다양한 단위를 조합해서 연산할 수 있음 (`px`, `%`, `em`, 등)
+
+---
+
+### Swiper 클래스 주의
+
+- 슬라이드 중 현재 활성화된 요소에는 `swiper-slide-active` 클래스가 자동으로 붙음  
+→ 특정 슬라이드에만 **스타일 적용**할 때 유용함
+
+---
+
+### 배경 채우기 디자인 팁
+
+- 슬라이드 좌우 공간에 색을 채울 때, `bg-left`, `bg-right`와 같은 클래스명을 부여하여  
+  배경색을 지정하고 **주 콘텐츠와의 연결감을 표현**
+
+```html
+<div class="bg-left"></div>
+<div class="swiper-container"> ... </div>
+<div class="bg-right"></div>
+```
+
+- 배경을 콘텐츠 영역과 동일한 색으로 설정하여 화면의 좌우가 빈 것처럼 보이지 않도록 구성
+
+---
+
+
 
 </details>
+
 
 
