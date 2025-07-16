@@ -365,5 +365,89 @@ width: calc(819px * 3);
 
 </details>
 
+### Day 6
 
+<details>
+<summary>유튜브 영상 삽입 및 랜덤 애니메이션 설정</summary>
+
+### 유튜브 영상 삽입 (16:9 비율 유지)
+
+- 유튜브 영상은 기본적으로 **가로 세로 비율이 16:9**
+- CSS로 이 비율을 유지하려면, **padding-top 방식**을 사용
+
+```css
+.video-container {
+  position: relative;
+  padding-top: 56.25%; /* 9 / 16 * 100 */
+  height: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+```
+
+- `padding-top: 56.25%`는 16:9 비율을 의미  
+- `iframe`은 `absolute`로 배치하여 전체 공간을 채움
+
+---
+
+### 유튜브 영상 ID 확인 방법
+
+- 영상 주소 예시:
+  ```
+  https://www.youtube.com/watch?v=4nguaDnt2GU&list=RD4nguaDnt2GU
+  ```
+- `watch?v=` 뒤에 오는 문자열이 유튜브의 **영상 ID**
+
+```html
+<iframe src="https://www.youtube.com/embed/4nguaDnt2GU" ...></iframe>
+```
+
+---
+
+### GSAP에서 곡선형 애니메이션 적용 (ease 옵션)
+
+- `ease` 옵션을 통해 애니메이션의 **속도 곡선**을 설정할 수 있음
+
+```javascript
+gsap.to(element, {
+  x: 100,
+  duration: 1,
+  ease: Power1.easeInOut
+});
+```
+
+- `Power1.easeInOut`: 부드럽게 시작해서 부드럽게 멈추는 곡선
+- 그 외에도 `Bounce`, `Back`, `Elastic` 등 다양한 이징 함수 존재
+
+---
+
+### 랜덤 숫자 생성 함수 (소수점 포함)
+
+- **범위 내에서 소수점 두 자리까지의 랜덤 숫자**를 생성하는 함수
+
+```javascript
+function random(min, max) {
+  return parseFloat((Math.random() * (max - min) + min).toFixed(2));
+}
+```
+
+- `Math.random()`을 활용해 `min ~ max` 범위의 값 생성
+- `.toFixed(2)`로 소수점 2자리까지 제한
+- `parseFloat()`을 통해 문자열 → 숫자로 변환
+
+---
+
+### 예시 사용 시나리오
+
+- 눈송이나 요소들이 랜덤 위치로 움직이는 애니메이션 구현 시  
+  → `x`, `y`, `scale`, `delay`, `duration` 등 다양하게 활용 가능
+
+
+</details>
 
